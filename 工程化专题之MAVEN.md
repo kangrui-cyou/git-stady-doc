@@ -38,7 +38,9 @@
   >
   >    * setting.xml文件的加载顺序
   >
-  >    ![1545104041195](C:\Users\kangrui\AppData\Roaming\Typora\typora-user-images\1545104041195.png)
+  >      ```python
+  >      用户   --->  ./m2/settings   --->   安装目录/config/setting.xml
+  >      ```
   >
   >    * 常用国内镜像
   >
