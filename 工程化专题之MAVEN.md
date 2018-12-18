@@ -142,10 +142,17 @@
   ```
 
 
-* 
+* **生命周期**
 
+  * --------------------------------------------------从左往右------------------------------------------------------------->
 
+  |             clean             |                      default                       |               site               |
+  | :---------------------------: | :------------------------------------------------: | :------------------------------: |
+  | pre-clean\|clean\|post\|clean | prepare-package\|comlile\|compile\|install\|deploy | pre-sitr\|post-site\|site-deploy |
 
+  * A Build Lifecycle is Made Up of Phases  (一个生命周期是包含多个Phases  )
+
+  * A Build Phase is Made Up if Plugin Goals （一个Phase是由多个Goals组成的）
 
 
 
