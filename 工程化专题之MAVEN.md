@@ -69,7 +69,98 @@
   >      </mirror>
   >      ```
   >
-  >    * 
   >
 
-  ​                
+
+* **新建maven项目**
+
+  * 项目结构
+
+    ```java
+    TestProjevt
+    	src
+    		main
+    			java      //源码
+    			resources //配置文件
+    	test
+    	pom.xml
+    ```
+
+  * pom.xml
+
+    ```xml
+    <groupId>com.cyou</groupId>
+    <artfactid>功能命名</artfactid>
+    <version>版本号</version>
+    <packaging>打包方式 模式为jar</packaging>
+    <dependencyManagement>
+    	1:只能出现在父pom
+        2:统一版本号
+        3：声明（子pom里面用到再引用）
+    </dependencyManagement>
+    <Dependency>
+    	1:Type 默认jar
+        2:scope
+        	a)complie 编译 例如 spring-core  默认
+        	b)test 测试
+        	c)provided 编译 例如 servlet
+        	d)runtime 运行时 例如JDBC实例
+        	e)system 本地一些jar 例如短信jar
+        	f)依赖仲裁
+        		i.最短路劲原则
+        		ii.加载先后原则
+        	g)exclusions
+        		i.排除包
+    </Dependency>
+    ```
+
+
+* **一般maven项目模块图**
+
+  ```shell
+  						     --------------
+  						     | spring-mvc |
+  						     --------------
+  						     		^
+  						     		|
+  						     --------------
+  						     | common-lib |
+  						     --------------
+  						     		^
+  						     		|
+               |--------------------->|<--------------------|
+        --------------         --------------        --------------
+  	  | spring-xxxx|	     | spring-jdbc|		   | spring-zzzz|
+  	  --------------		 --------------	       --------------
+              ^                        ^                    ^
+  			|						 |                    |
+  			-------------------------|---------------------
+  						     --------------
+  						     | spring-web |
+  						     --------------
+  						     		
+  ```
+
+
+* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+​                
