@@ -28,6 +28,31 @@
 
 * git status 有事没事敲一敲  查看文件状态
 
+*  git ac '提交注释'  （add  commit  同时进行）
+
+* git clone git@xxx.git  下载代码至本地
+
+* git  remote  将代码推送到远端并在远端新建项目
+
+  * 创建本地文件夹并 git init  初始化
+  * 在远端 new project   (本地和远端的项目名必须相同  且必须为空项目)
+  * git remote add origin git@xxx.git  （将本地和远端建立联系）   
+
+  * git push origin master  (将本地代码推送至远端)
+
+* git fetch 拉取远端信息
+* git pull  拉取远端代码
+* git push 将本地代码推送至远端 
+* git checkout
+  * 切新分支  checkout -b dev 创建新分支  
+  * 撤销更改  checkout . (撤销全部 可加具体文件名) 
+* git log  日志
+* git stash 工作未提交暂存栈
+* git merge  合并分支
+* git rebase 将head指定到某一个节点(变基)
+* git tag 打版 一个特殊的分支
+* git alias  命令组合
+
 
 
 
