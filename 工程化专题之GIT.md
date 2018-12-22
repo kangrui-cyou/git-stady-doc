@@ -24,14 +24,22 @@
   * ssh-keygen  -t  rsa  -C  'kangrui@cyou.com'
     * 生成公私钥后拷贝公钥内容至githup
 
+###  **逻辑区**
+
+* Workspace 工作区
+* Index/Stage 暂存区
+* Repository 本地仓库
+* Remote 远程仓库
+
 ### **常用命令**
 
 * git status 有事没事敲一敲  查看文件状态
-
-*  git ac '提交注释'  （add  commit  同时进行）
-
+* git ac '提交注释'  （add  commit  同时进行）
+* git add '文件名'  添加至暂存区
+* git comit -m '注释' 提交至本地仓库
+* git rm 删除
+* git mv 改名
 * git clone git@xxx.git  下载代码至本地
-
 * git  remote  将代码推送到远端并在远端新建项目
 
   * 创建本地文件夹并 git init  初始化
@@ -39,9 +47,8 @@
   * git remote add origin git@xxx.git  （将本地和远端建立联系）   
 
   * git push origin master  (将本地代码推送至远端)
-
 * git fetch 拉取远端信息
-* git pull  拉取远端代码
+* git pull  拉取远端代码 并与本地合并
 * git push 将本地代码推送至远端 
 * git checkout
   * 切新分支  checkout -b dev 创建新分支  
