@@ -51,7 +51,6 @@ public class ZhangXiang implemments Person{
 ```java
 /*
 * JDK动态代理 需实现InvocationHandler接口
-*
 * 媒婆 
 */
 public calss JDKMeiPo implements InvocationHandler{
@@ -114,3 +113,82 @@ public class TestFindLove{
 ```
 
 * cglib
+
+```java
+/*
+* 被代理类
+*/
+public class ZhangXiang{
+    private String sex = "男";
+    private String name = "张祥";
+    
+    @Override
+    public void findLove(){
+        System.out.print("我叫"+this.name+"性别"+this.sex);
+        System.out.print("找对象的条件是"+"肤白貌美大长腿！");
+    }
+    //省略get/set
+}
+```
+
+```java
+/*
+* 代理类将被代理类作为自己的父类
+*
+*/
+public class CGLIBMeiPo implements MethidInterceptor{
+    
+    //该方法用于生成动态代理类
+    public Object getInterceptor(Class clazz)throws Exception{
+        Enhancer enhancer = new Enhancer();
+        //把父类设置为谁？
+        //这一步就是告诉cglib，生成的子类需要继承那个类
+        enhancer.setSuperclass(clazz);
+        //设置回调
+        enhancer.setCallback(this);
+        //第一步：生成源代码
+        //第二步：编译成class文件
+        //第三步：加载到JVM中，并返回代理对象
+        return enhancer.create();
+    }
+    
+    //定义拦截器
+    @Override
+    public Object intercept(Object obj,Method method,Object[] args,MethodProxy proxy) throws Exception{
+        System.out.print("我是CGLIB媒婆，我要给你找对象了~");
+        
+        //Super就是原始被代理对象
+        proxy.invokeSuper(obj,args);
+        
+        return null;
+    }
+    
+}
+```
+
+```java
+/*
+* 测试类
+*/
+public class TestFindLove{
+    //自己找对象  找的慢  没资源
+    @Test
+    public void testZiJiZhao{
+        ZhangXiang zx = new ZhangXiang();
+        zx.findLove();
+    }
+    
+    @Test
+    public void CGLIBmeipo(){
+        /*原理
+        *1：CGLIB的动态代理是通过生成一个被代理对象的子类，然后重写父类的方法
+        *2：生成以后的对象可以强制转换为被代理对象
+        *3：子类的引用赋值给父类
+        */
+        ZhangXiang obj = (Person) new CGLIBMeiPo().getInstance(ZhangXiang。class;
+        obj.findLove();
+    }
+    
+}
+```
+
