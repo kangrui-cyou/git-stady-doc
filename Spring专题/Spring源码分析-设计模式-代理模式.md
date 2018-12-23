@@ -44,7 +44,7 @@ public class ZhangXiang implemments Person{
         System.out.print("我叫"+this.name+"性别"+this.sex);
         System.out.print("找对象的条件是"+"肤白貌美大长腿！");
     }
-    //省略get/set
+    //省略get/set/构造
 }
 ```
 
@@ -122,12 +122,11 @@ public class ZhangXiang{
     private String sex = "男";
     private String name = "张祥";
     
-    @Override
     public void findLove(){
         System.out.print("我叫"+this.name+"性别"+this.sex);
         System.out.print("找对象的条件是"+"肤白貌美大长腿！");
     }
-    //省略get/set
+    //省略get/set/构造
 }
 ```
 
@@ -152,7 +151,8 @@ public class CGLIBMeiPo implements MethidInterceptor{
         return enhancer.create();
     }
     
-    //定义拦截器
+    //同样是做了字节码重一件事 
+    //对于使用api的用户来说是无感知的（悄悄地给你搞了一个儿子你还不知道）
     @Override
     public Object intercept(Object obj,Method method,Object[] args,MethodProxy proxy) throws Exception{
         System.out.print("我是CGLIB媒婆，我要给你找对象了~");
@@ -185,7 +185,7 @@ public class TestFindLove{
         *2：生成以后的对象可以强制转换为被代理对象
         *3：子类的引用赋值给父类
         */
-        ZhangXiang obj = (Person) new CGLIBMeiPo().getInstance(ZhangXiang。class;
+        ZhangXiang obj = (ZhangXiang) new CGLIBMeiPo().getInstance(ZhangXiang.class;
         obj.findLove();
     }
     
