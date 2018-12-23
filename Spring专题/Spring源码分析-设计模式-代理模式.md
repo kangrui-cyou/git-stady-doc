@@ -157,8 +157,9 @@ public class CGLIBMeiPo implements MethidInterceptor{
     public Object intercept(Object obj,Method method,Object[] args,MethodProxy proxy) throws Exception{
         System.out.print("我是CGLIB媒婆，我要给你找对象了~");
         
-        //Super就是原始被代理对象
+        //Super就是原始被代理对象  
         proxy.invokeSuper(obj,args);
+        //proxy.invoke(obj,args);//这样会死循环  调取的是动态代理为你生成的子类的方法
         
         return null;
     }
@@ -192,3 +193,17 @@ public class TestFindLove{
 }
 ```
 
+
+
+### **两种代理的对比**
+
+*  JDK
+
+  * jdk的动态代理是通过接口进行强制转换的
+  * 生成以后的代理对象，可以强制转换为接口
+
+*  CGLIB
+
+  * CGLIB的动态代理是通过生成一个被代理的对象的子类，然后重写费用类的方法
+  * 生成以后的对象，可以强制转换为被代理对象
+  * 子类引用赋值给父类
